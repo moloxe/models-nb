@@ -1,0 +1,430 @@
+{
+  "seed": 42,
+  "descripcion": "5 MLP independientes (una consulta a la vez)",
+  "modelos": [
+    {
+      "key": "superhost",
+      "target": "¿Es superhost?",
+      "tipo": "binario",
+      "archivo_keras": "mlp_superhost.keras",
+      "archivo_preprocessor": "preprocessor_superhost.joblib",
+      "input_dim": 21,
+      "features": [
+        "num__Tiempo como host en años",
+        "num__Tipo de cama",
+        "num__Número de cuartos o habitaciones",
+        "num__Tipo de alojamiento",
+        "num__Número de servicios o amenidades",
+        "num__Precio por noche",
+        "num__Promedio de reviews o calificaión",
+        "num__Política de cancelación",
+        "num__Número de reviews o reseñas",
+        "cat__¿Identidad verificada del host?_NO",
+        "cat__¿Identidad verificada del host?_SI",
+        "cat__¿Host tiene foto de perfil?_NO",
+        "cat__¿Host tiene foto de perfil?_SI",
+        "cat__Ubicación exacta_NO",
+        "cat__Ubicación exacta_SI",
+        "cat__Instant bookable_NO",
+        "cat__Instant bookable_SI",
+        "cat__Verificar teléfono de huésped_NO",
+        "cat__Verificar teléfono de huésped_SI",
+        "cat__Disponibilidad mayor a 90 días_NO",
+        "cat__Disponibilidad mayor a 90 días_SI"
+      ],
+      "cols_num": [
+        "Tiempo como host en años",
+        "Tipo de cama",
+        "Número de cuartos o habitaciones",
+        "Tipo de alojamiento",
+        "Número de servicios o amenidades",
+        "Precio por noche",
+        "Promedio de reviews o calificaión",
+        "Política de cancelación",
+        "Número de reviews o reseñas"
+      ],
+      "cols_cat": [
+        "¿Identidad verificada del host?",
+        "¿Host tiene foto de perfil?",
+        "Ubicación exacta",
+        "Instant bookable",
+        "Verificar teléfono de huésped",
+        "Disponibilidad mayor a 90 días"
+      ],
+      "cols_excluir": [
+        "Ciudad",
+        "Distrito",
+        "Alias",
+        "ID Airbnb",
+        "URL Canónica",
+        "room_id",
+        "Fecha de colecta",
+        "Título de cabecera",
+        "Título de la propiedad",
+        "Resumen de la propiedad",
+        "Acerca de este espacio",
+        "Reconocimiento de Airbnb",
+        "¿Es superhost?"
+      ],
+      "config_ganadora": {
+        "nombre": "C. Profunda (128-64-32)",
+        "capas": [
+          128,
+          64,
+          32
+        ]
+      },
+      "metricas_test": {
+        "accuracy": 0.4545,
+        "precision": 0.4545,
+        "recall": 1.0,
+        "f1": 0.625,
+        "auc": 0.7
+      },
+      "umbral_decision": 0.5,
+      "clases": [
+        "No Superhost",
+        "Superhost"
+      ]
+    },
+    {
+      "key": "instant",
+      "target": "Instant bookable",
+      "tipo": "binario",
+      "archivo_keras": "mlp_instant.keras",
+      "archivo_preprocessor": "preprocessor_instant.joblib",
+      "input_dim": 21,
+      "features": [
+        "num__Tiempo como host en años",
+        "num__Tipo de cama",
+        "num__Número de cuartos o habitaciones",
+        "num__Tipo de alojamiento",
+        "num__Número de servicios o amenidades",
+        "num__Precio por noche",
+        "num__Promedio de reviews o calificaión",
+        "num__Política de cancelación",
+        "num__Número de reviews o reseñas",
+        "cat__¿Es superhost?_NO",
+        "cat__¿Es superhost?_SI",
+        "cat__¿Identidad verificada del host?_NO",
+        "cat__¿Identidad verificada del host?_SI",
+        "cat__¿Host tiene foto de perfil?_NO",
+        "cat__¿Host tiene foto de perfil?_SI",
+        "cat__Ubicación exacta_NO",
+        "cat__Ubicación exacta_SI",
+        "cat__Verificar teléfono de huésped_NO",
+        "cat__Verificar teléfono de huésped_SI",
+        "cat__Disponibilidad mayor a 90 días_NO",
+        "cat__Disponibilidad mayor a 90 días_SI"
+      ],
+      "cols_num": [
+        "Tiempo como host en años",
+        "Tipo de cama",
+        "Número de cuartos o habitaciones",
+        "Tipo de alojamiento",
+        "Número de servicios o amenidades",
+        "Precio por noche",
+        "Promedio de reviews o calificaión",
+        "Política de cancelación",
+        "Número de reviews o reseñas"
+      ],
+      "cols_cat": [
+        "¿Es superhost?",
+        "¿Identidad verificada del host?",
+        "¿Host tiene foto de perfil?",
+        "Ubicación exacta",
+        "Verificar teléfono de huésped",
+        "Disponibilidad mayor a 90 días"
+      ],
+      "cols_excluir": [
+        "Ciudad",
+        "Distrito",
+        "Alias",
+        "ID Airbnb",
+        "URL Canónica",
+        "room_id",
+        "Fecha de colecta",
+        "Título de cabecera",
+        "Título de la propiedad",
+        "Resumen de la propiedad",
+        "Acerca de este espacio",
+        "Reconocimiento de Airbnb",
+        "Instant bookable"
+      ],
+      "config_ganadora": {
+        "nombre": "A. Baseline (32)",
+        "capas": [
+          32
+        ]
+      },
+      "metricas_test": {
+        "accuracy": 0.6364,
+        "precision": 0.6364,
+        "recall": 1.0,
+        "f1": 0.7778,
+        "auc": 0.5714
+      },
+      "umbral_decision": 0.5,
+      "clases": [
+        "No instant",
+        "Instant bookable"
+      ]
+    },
+    {
+      "key": "disp90",
+      "target": "Disponibilidad mayor a 90 días",
+      "tipo": "binario",
+      "archivo_keras": "mlp_disp90.keras",
+      "archivo_preprocessor": "preprocessor_disp90.joblib",
+      "input_dim": 21,
+      "features": [
+        "num__Tiempo como host en años",
+        "num__Tipo de cama",
+        "num__Número de cuartos o habitaciones",
+        "num__Tipo de alojamiento",
+        "num__Número de servicios o amenidades",
+        "num__Precio por noche",
+        "num__Promedio de reviews o calificaión",
+        "num__Política de cancelación",
+        "num__Número de reviews o reseñas",
+        "cat__¿Es superhost?_NO",
+        "cat__¿Es superhost?_SI",
+        "cat__¿Identidad verificada del host?_NO",
+        "cat__¿Identidad verificada del host?_SI",
+        "cat__¿Host tiene foto de perfil?_NO",
+        "cat__¿Host tiene foto de perfil?_SI",
+        "cat__Ubicación exacta_NO",
+        "cat__Ubicación exacta_SI",
+        "cat__Instant bookable_NO",
+        "cat__Instant bookable_SI",
+        "cat__Verificar teléfono de huésped_NO",
+        "cat__Verificar teléfono de huésped_SI"
+      ],
+      "cols_num": [
+        "Tiempo como host en años",
+        "Tipo de cama",
+        "Número de cuartos o habitaciones",
+        "Tipo de alojamiento",
+        "Número de servicios o amenidades",
+        "Precio por noche",
+        "Promedio de reviews o calificaión",
+        "Política de cancelación",
+        "Número de reviews o reseñas"
+      ],
+      "cols_cat": [
+        "¿Es superhost?",
+        "¿Identidad verificada del host?",
+        "¿Host tiene foto de perfil?",
+        "Ubicación exacta",
+        "Instant bookable",
+        "Verificar teléfono de huésped"
+      ],
+      "cols_excluir": [
+        "Ciudad",
+        "Distrito",
+        "Alias",
+        "ID Airbnb",
+        "URL Canónica",
+        "room_id",
+        "Fecha de colecta",
+        "Título de cabecera",
+        "Título de la propiedad",
+        "Resumen de la propiedad",
+        "Acerca de este espacio",
+        "Reconocimiento de Airbnb",
+        "Disponibilidad mayor a 90 días"
+      ],
+      "config_ganadora": {
+        "nombre": "C. Profunda (128-64-32)",
+        "capas": [
+          128,
+          64,
+          32
+        ]
+      },
+      "metricas_test": {
+        "accuracy": 0.4545,
+        "precision": 0.3333,
+        "recall": 0.2,
+        "f1": 0.25,
+        "auc": 0.4333
+      },
+      "umbral_decision": 0.5,
+      "clases": [
+        "<= 90 dias",
+        "> 90 dias"
+      ]
+    },
+    {
+      "key": "precio",
+      "target": "Precio por noche",
+      "tipo": "multiclase",
+      "archivo_keras": "mlp_precio.keras",
+      "archivo_preprocessor": "preprocessor_precio.joblib",
+      "input_dim": 22,
+      "features": [
+        "num__Tiempo como host en años",
+        "num__Tipo de cama",
+        "num__Número de cuartos o habitaciones",
+        "num__Tipo de alojamiento",
+        "num__Número de servicios o amenidades",
+        "num__Promedio de reviews o calificaión",
+        "num__Política de cancelación",
+        "num__Número de reviews o reseñas",
+        "cat__¿Es superhost?_NO",
+        "cat__¿Es superhost?_SI",
+        "cat__¿Identidad verificada del host?_NO",
+        "cat__¿Identidad verificada del host?_SI",
+        "cat__¿Host tiene foto de perfil?_NO",
+        "cat__¿Host tiene foto de perfil?_SI",
+        "cat__Ubicación exacta_NO",
+        "cat__Ubicación exacta_SI",
+        "cat__Instant bookable_NO",
+        "cat__Instant bookable_SI",
+        "cat__Verificar teléfono de huésped_NO",
+        "cat__Verificar teléfono de huésped_SI",
+        "cat__Disponibilidad mayor a 90 días_NO",
+        "cat__Disponibilidad mayor a 90 días_SI"
+      ],
+      "cols_num": [
+        "Tiempo como host en años",
+        "Tipo de cama",
+        "Número de cuartos o habitaciones",
+        "Tipo de alojamiento",
+        "Número de servicios o amenidades",
+        "Promedio de reviews o calificaión",
+        "Política de cancelación",
+        "Número de reviews o reseñas"
+      ],
+      "cols_cat": [
+        "¿Es superhost?",
+        "¿Identidad verificada del host?",
+        "¿Host tiene foto de perfil?",
+        "Ubicación exacta",
+        "Instant bookable",
+        "Verificar teléfono de huésped",
+        "Disponibilidad mayor a 90 días"
+      ],
+      "cols_excluir": [
+        "Ciudad",
+        "Distrito",
+        "Alias",
+        "ID Airbnb",
+        "URL Canónica",
+        "room_id",
+        "Fecha de colecta",
+        "Título de cabecera",
+        "Título de la propiedad",
+        "Resumen de la propiedad",
+        "Acerca de este espacio",
+        "Reconocimiento de Airbnb",
+        "Precio por noche"
+      ],
+      "config_ganadora": {
+        "nombre": "A. Baseline (32)",
+        "capas": [
+          32
+        ]
+      },
+      "metricas_test": {
+        "accuracy": 0.3636,
+        "macro_f1": 0.3556
+      },
+      "clases": [
+        "económico",
+        "medio",
+        "alto"
+      ],
+      "bins_precio": [
+        20.0,
+        109.0,
+        133.33333333333331,
+        320.0
+      ]
+    },
+    {
+      "key": "calificacion",
+      "target": "Promedio de reviews o calificaión",
+      "tipo": "regresion",
+      "archivo_keras": "mlp_calificacion.keras",
+      "archivo_preprocessor": "preprocessor_calificacion.joblib",
+      "input_dim": 22,
+      "features": [
+        "num__Tiempo como host en años",
+        "num__Tipo de cama",
+        "num__Número de cuartos o habitaciones",
+        "num__Tipo de alojamiento",
+        "num__Número de servicios o amenidades",
+        "num__Precio por noche",
+        "num__Política de cancelación",
+        "num__Número de reviews o reseñas",
+        "cat__¿Es superhost?_NO",
+        "cat__¿Es superhost?_SI",
+        "cat__¿Identidad verificada del host?_NO",
+        "cat__¿Identidad verificada del host?_SI",
+        "cat__¿Host tiene foto de perfil?_NO",
+        "cat__¿Host tiene foto de perfil?_SI",
+        "cat__Ubicación exacta_NO",
+        "cat__Ubicación exacta_SI",
+        "cat__Instant bookable_NO",
+        "cat__Instant bookable_SI",
+        "cat__Verificar teléfono de huésped_NO",
+        "cat__Verificar teléfono de huésped_SI",
+        "cat__Disponibilidad mayor a 90 días_NO",
+        "cat__Disponibilidad mayor a 90 días_SI"
+      ],
+      "cols_num": [
+        "Tiempo como host en años",
+        "Tipo de cama",
+        "Número de cuartos o habitaciones",
+        "Tipo de alojamiento",
+        "Número de servicios o amenidades",
+        "Precio por noche",
+        "Política de cancelación",
+        "Número de reviews o reseñas"
+      ],
+      "cols_cat": [
+        "¿Es superhost?",
+        "¿Identidad verificada del host?",
+        "¿Host tiene foto de perfil?",
+        "Ubicación exacta",
+        "Instant bookable",
+        "Verificar teléfono de huésped",
+        "Disponibilidad mayor a 90 días"
+      ],
+      "cols_excluir": [
+        "Ciudad",
+        "Distrito",
+        "Alias",
+        "ID Airbnb",
+        "URL Canónica",
+        "room_id",
+        "Fecha de colecta",
+        "Título de cabecera",
+        "Título de la propiedad",
+        "Resumen de la propiedad",
+        "Acerca de este espacio",
+        "Reconocimiento de Airbnb",
+        "Promedio de reviews o calificaión"
+      ],
+      "config_ganadora": {
+        "nombre": "E. L2 1e-3",
+        "capas": [
+          64,
+          32,
+          16
+        ],
+        "l2": 0.001
+      },
+      "metricas_test": {
+        "rmse": 0.3334,
+        "mae": 0.2606,
+        "r2": -4.2046
+      },
+      "rango_y": [
+        4.15,
+        5.0
+      ]
+    }
+  ]
+}
