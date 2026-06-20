@@ -6,21 +6,27 @@ Este proyecto expone un servidor en Flask con modelos de Machine Learning (MLP y
 - Python 3.9 o superior.
 - Make (opcional, pero recomendado para automatización).
 
-## Instalación y Ejecución
+## Instalación y Ejecución con Conda (Recomendado)
 
-Puedes usar el comando `make` para automatizar todo:
+Debido a que las librerías de Machine Learning (TensorFlow, PyTorch) pueden ser sensibles a las versiones de Python, se recomienda usar **Conda** para crear un entorno aislado con Python 3.11.
 
-1. **Instalar dependencias y crear entorno virtual:**
+1. **Crear y activar el entorno:**
    ```bash
-   make install
+   conda create -n models-nb python=3.11 -y
+   conda activate models-nb
    ```
 
-2. **Ejecutar el servidor:**
+2. **Instalar dependencias:**
    ```bash
-   make run
+   pip install -r requirements.txt
    ```
 
-## Forma Manual (Sin Make)
+3. **Ejecutar el servidor:**
+   ```bash
+   python server.py
+   ```
+
+## Instalación con Make (Entorno Virtual)
 
 Si no cuentas con `make`, puedes correr los siguientes comandos:
 
